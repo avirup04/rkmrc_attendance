@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FeatureCard from './FeatureCard'
 
 export default class Home extends Component {
   render() {
@@ -30,30 +31,26 @@ export default class Home extends Component {
 
         <div className='container my-5 text center'>
           <div className='row g-4'>
-            {/* First Card */}
-            <div className='col-md-4'>
-              <div className='p-4 border rounded shadow-sm'>
-                <i className='bi bi-calendar3 text-primary' style={{ fontSize: "2.5rem" }}></i>
-                <h3 className='h5 fw-bold'>Semester routines</h3>
-                <p className='text-muted'>Personalized tracking for different department schedules.</p>
-              </div>
-            </div>
-            {/* Second Card */}
-            <div className='col-md-4'>
-              <div className='p-4 border rounded shadow-sm'>
-                <i className="bi bi-calculator text-primary" style={{ fontSize: "2.5rem" }}></i>
-                <h3 className='h5 fw-bold'>Instant Calculation</h3>
-                <p className='text-muted'>Know your attendance percentage in one click. And get instant results.</p>
-              </div>
-            </div>
-            {/* Third Card */}
-            <div className='col-md-4'>
-              <div className='p-4 border rounded shadow-sm'>
-                <i className="bi bi-exclamation-triangle-fill text-danger" style={{ fontSize: "2.5rem" }}></i>
-                <h3 className='h5 fw-bold'>Avoid Debarment</h3>
-                <p className='text-muted'>Get warnings before you fall below the required criteria.</p>
-              </div>
-            </div>
+
+            {/* 1st card  */}
+            <FeatureCard 
+            iconName="bi-calendar3" 
+            title="Semester Routines" 
+            description={`Personalize Tracking for dfifferent schedules for the ${this.props.dept}.`} />
+
+            {/* 2nd card */}
+            <FeatureCard
+            iconName="bi-calculator"
+            title="Instant Calculation"
+            description="Know your attaendance percentage in one click. Get instant results."
+            />
+
+            {/* 3rd card */}
+            <FeatureCard
+            iconName="bi-exclamation-triangle-fill text-danger"
+            title="Avoid Debarment"
+            description="Receive warnings if your attendance falls below the required criteria"
+            />
 
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 export default function Navbar(props) {
     return (
@@ -12,10 +13,10 @@ export default function Navbar(props) {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav w-100">
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="/">Home</a>
+                                <Link className='nav-link' to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/">About</a>
+                                <Link className='nav-link' to="/about">About</Link>
                             </li>
                             <li className="nav-item ms-auto">
                                 <a className="nav-link" href='/' aria-disabled="true">Login</a>
