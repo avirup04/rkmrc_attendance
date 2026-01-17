@@ -18,6 +18,9 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link className='nav-link' to="/about">About</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className='nav-link' to="/register">Registration</Link>
+                            </li>
                             <li className="nav-item ms-auto">
                                 <Link className='nav-link' to="/login">Login</Link>
                             </li>
