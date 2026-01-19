@@ -1,6 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react'; // Mandatory: Import useState
 
 export default function Register(props) {
+  // Line 1: Create the "Memory" for the form
+  const [formData, setFormData] = useState({
+    semester: '',
+    department: '',
+    roll_no: '',
+    email: '',
+    mobile: '',
+    password: ''
+  });
+
+  // Line 2: The Logic to track every keystroke
+  const handleChange = (e) => {
+    // We use [e.target.name] so this one function works for ALL input boxes
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Line 3: The Logic to send data to XAMPP
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Stop page refresh
+
+    // Create a safe copy of the data
+  const safeData = {
+    ...formData,
+    roll_no: btoa(formData.roll_no) // Protects LSUG/124/25 entirely
+  };
+
+    fetch('http://localhost/react_apps/rkmrc_attendance/rkmrc_attendance_api/register.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(safeData) // Convert memory to JSON string
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === "Success") {
+          alert("Registration Successful!");
+          // Line 4: Clear the form memory
+          setFormData({
+            semester: '', department: '', roll_no: '',
+            email: '', mobile: '', password: ''
+          });
+        } else {
+          alert("Error: " + data.message);
+        }
+      })
+      .catch(err => console.error("Connection failed:", err));
+  };
+
   return (
     <div className="container my-5">
       <div className="row justify-content-center">
@@ -11,41 +61,42 @@ export default function Register(props) {
               <h2 className="fw-bold mt-2">Student Registration</h2>
               <p className="text-muted">Create your account for the {props.dept}</p>
             </div>
-            
-            <form>
+
+            <form onSubmit={handleSubmit}> {/* Connect the courier logic here */}
               <div className="row g-3">
-                {/* Semester & Department */}
                 <div className="col-md-6">
                   <label className="form-label">Semester</label>
-                  <select className="form-select">
+                  <select className="form-select" name="semester" value={formData.semester} onChange={handleChange} required>
                     <option value="">Choose...</option>
-                    <option>1st Sem</option>
-                    <option>2nd Sem</option>
+                    <option value="1">1st Sem</option>
+                    <option value="2">2nd Sem</option>
                   </select>
                 </div>
                 <div className="col-md-6">
                   <label className="form-label">Department</label>
-                  <input type="text" className="form-control" value={props.dept} readOnly />
+                  <select className="form-select" name="department" value={formData.department} onChange={handleChange} required>
+                    <option value="">Choose...</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Life Science">Life Science</option>
+                  </select>
                 </div>
 
-                {/* Roll No & Email */}
                 <div className="col-md-6">
                   <label className="form-label">College Roll No.</label>
-                  <input type="text" className="form-control" placeholder="e.g. 101" />
+                  <input type="text" className="form-control" name="roll_no" value={formData.roll_no} placeholder="e.g. 101" onChange={handleChange} required />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label">Email Address</label>
-                  <input type="email" className="form-control" placeholder="name@example.com" />
+                  <input type="email" className="form-control" name="email" value={formData.email} placeholder="name@example.com" onChange={handleChange} required />
                 </div>
 
-                {/* Mobile & Password */}
                 <div className="col-md-6">
                   <label className="form-label">Mobile No.</label>
-                  <input type="tel" className="form-control" placeholder="+91..." />
+                  <input type="tel" className="form-control" name="mobile" value={formData.mobile} placeholder="+91..." onChange={handleChange} />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label">Password</label>
-                  <input type="password" className="form-control" placeholder="••••••••" />
+                  <input type="password" className="form-control" name="password" value={formData.password} placeholder="••••••••" onChange={handleChange} required />
                 </div>
 
                 <div className="col-12 mt-4">
