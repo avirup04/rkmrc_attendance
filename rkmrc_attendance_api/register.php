@@ -1,18 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
-
-// 1. Force PHP to be quiet about HTML errors
-error_reporting(0); 
-
-$conn = new mysqli("localhost", "root", "", "rkmrc_attendance");
-
-if ($conn->connect_error) {
-    echo json_encode(["message" => "Database connection failed"]);
-    exit();
-}
+include_once 'config.php'; // Inject database and headers
 
 $json_data = file_get_contents("php://input");
 $data = json_decode($json_data);
