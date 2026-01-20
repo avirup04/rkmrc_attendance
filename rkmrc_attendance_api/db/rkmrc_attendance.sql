@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2026 at 04:58 AM
+-- Generation Time: Jan 20, 2026 at 09:15 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,7 +47,9 @@ INSERT INTO `users` (`id`, `roll_no`, `dept`, `semester`, `email`, `mobile`, `pa
 (2, 'LSUG/124/29', 'Life Science', 2, 'fkhdhh@gmail.com', '9609173472', '$2y$10$uyvO5Cx9d7W5BqlYtPI7DekOsxOSA2bb6NHcgaKEnmCRQ1myFz6su', 0),
 (58, 'LSUG12425', 'Life Science', 2, 'avirupmukherjee019@gmail.com', '9609173472', '$2y$10$SgncZaa4J4KxAeaDxPAiXun0yZDn09O970Vy1ZRCpWCghjQGZq9OG', 0),
 (61, 'LSUG12429', 'Physics', 2, 'phy@gmail.com', '8796542365', '$2y$10$Os8GAFMNVebDeW2vkQu47Okxv8GIUrXFAQ3aFMK3YO1wzj/wtOEs6', 0),
-(62, 'PHUG12425', 'Physics', 2, 'phy@gmail.com', '1234567890', '$2y$10$q6jxK81.KHdD8sOj9f20U.kicpgwH3aPDV5oPTS3C1ombIBjJiGDi', 0);
+(62, 'PHUG12425', 'Physics', 2, 'phy@gmail.com', '1234567890', '$2y$10$q6jxK81.KHdD8sOj9f20U.kicpgwH3aPDV5oPTS3C1ombIBjJiGDi', 0),
+(63, 'LSUG26625', 'Life_Sciences', 2, 'biswastaniska06@gmail.com', '8250256224', '$2y$10$Yy3olYMK7O0dvr3CWkSYEeNdG1hwNjkMiX3cWqvBemyGxDo9we/oW', 0),
+(64, 'LSUG04625', 'Life_Sciences', 2, 'rupayansingha2@gmail.com', '9143480258', '$2y$10$Ttf2bLk3D6zC3MCHFZNeLOYXX388tePrXnnGkHf6b5vsJ8oHGQjmq', 0);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +70,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

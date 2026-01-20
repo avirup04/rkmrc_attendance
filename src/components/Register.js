@@ -70,14 +70,30 @@ export default function Register(props) {
                     <option value="">Choose...</option>
                     <option value="1">1st Sem</option>
                     <option value="2">2nd Sem</option>
+                    <option value="3">3rd Sem</option>
+                    <option value="4">4th Sem</option>
+                    <option value="5">5th Sem</option>
+                    <option value="6">6th Sem</option>
+                    <option value="7">7th Sem</option>
+                    <option value="8">8th Sem</option>
                   </select>
                 </div>
                 <div className="col-md-6">
                   <label className="form-label">Department</label>
                   <select className="form-select" name="department" value={formData.department} onChange={handleChange} required>
                     <option value="">Choose...</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Computer_Science">Computer Science</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Life_Sciences">Life Sciences</option>
+                    <option value="Mathematics">Mathematics</option>
                     <option value="Physics">Physics</option>
-                    <option value="Life Science">Life Science</option>
+                    <option value="Bengali">Bengali</option>
+                    <option value="English">English</option>
+                    <option value="History">History</option>
+                    <option value="Philosophy">Philosophy</option>
+                    <option value="Political_Science">Political Science</option>
+                    <option value="Sanskrit">Sanskrit</option>
                   </select>
                 </div>
 
