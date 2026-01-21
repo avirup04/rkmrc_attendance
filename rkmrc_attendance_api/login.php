@@ -14,7 +14,7 @@ if ($data) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($pass, $row['password'])) {
-            echo json_encode(["message" => "success", "user" => $row['roll_no']]);
+            echo json_encode(["message" => "success", "user_name" => $row['name'], "user" => $row['roll_no']]);
         } else {
             echo json_encode(["message" => "Invalid Password"]);
         }

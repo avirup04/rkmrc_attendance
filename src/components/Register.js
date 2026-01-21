@@ -3,6 +3,7 @@ import React, { useState } from 'react'; // Mandatory: Import useState
 export default function Register(props) {
   // Line 1: Create the "Memory" for the form
   const [formData, setFormData] = useState({
+    name: '',
     semester: '',
     department: '',
     roll_no: '',
@@ -41,7 +42,7 @@ export default function Register(props) {
           alert("Registration Successful!");
           // Line 4: Clear the form memory
           setFormData({
-            semester: '', department: '', roll_no: '',
+            name: '', semester: '', department: '', roll_no: '',
             email: '', mobile: '', password: ''
           });
         } else {
@@ -64,6 +65,12 @@ export default function Register(props) {
 
             <form onSubmit={handleSubmit}> {/* Connect the courier logic here */}
               <div className="row g-3">
+
+                <div className="col-12">
+                  <label className="form-label">Name</label>
+                  <input type="text" className="form-control" name="name" value={formData.name} placeholder="Enter your full name" onChange={handleChange} required />
+                </div>
+
                 <div className="col-md-6">
                   <label className="form-label">Semester</label>
                   <select className="form-select" name="semester" value={formData.semester} onChange={handleChange} required>

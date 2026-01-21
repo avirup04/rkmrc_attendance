@@ -31,6 +31,9 @@
             .then(res => res.json())
             .then(data => {
                 if (data.message === "success") {
+                    //saving the user's name
+                    localStorage.setItem('studentName', data.user_name);
+                    localStorage.setItem('roll_no', data.user)
                     alert("Login Successful!");
                     navigate('/dashboard');
                 }

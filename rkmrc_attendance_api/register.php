@@ -5,6 +5,8 @@ $json_data = file_get_contents("php://input");
 $data = json_decode($json_data);
 
 if($data) {
+    // Capture the name from react
+    $name = $conn->real_escape_string($data->name);
     // base64_decode turns the safe string back into LSUG/124/25
     $roll = $conn->real_escape_string(base64_decode($data->roll_no));
     $dept = $conn->real_escape_string($data->department);
@@ -14,8 +16,8 @@ if($data) {
     $pass = password_hash($data->password, PASSWORD_DEFAULT);
 
     // 2. Ensure your column names (roll_no, dept, etc.) match phpMyAdmin EXACTLY
-    $sql = "INSERT INTO users (roll_no, dept, semester, email, mobile, password) 
-            VALUES ('$roll', '$dept', '$sem', '$email', '$mobile', '$pass')";
+    $sql = "INSERT INTO users (name, roll_no, dept, semester, email, mobile, password) 
+            VALUES ('$name', '$roll', '$dept', '$sem', '$email', '$mobile', '$pass')";
     
     if($conn->query($sql)) {
         echo json_encode(["message" => "Success"]);
