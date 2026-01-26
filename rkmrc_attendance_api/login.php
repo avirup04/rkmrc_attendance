@@ -5,6 +5,7 @@ $json_data = file_get_contents("php://input");
 $data = json_decode($json_data);
 
 if ($data) {
+    // Decode the roll number as you were doing
     $roll = $conn->real_escape_string(base64_decode($data->roll_no));
     $pass = $data->password;
 
@@ -13,8 +14,18 @@ if ($data) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        
         if (password_verify($pass, $row['password'])) {
-            echo json_encode(["message" => "success", "user_name" => $row['name'], "user" => $row['roll_no']]);
+            // FIXED: Added the "sem" line below!
+            echo json_encode([
+                "message" => "success", 
+                "user_name" => $row['name'], 
+                "user" => $row['roll_no'], 
+                "dept" => $row['dept'],
+                
+                // CRITICAL ADDITION: This sends the semester to React
+                "sem" => $row['semester'] 
+            ]);
         } else {
             echo json_encode(["message" => "Invalid Password"]);
         }

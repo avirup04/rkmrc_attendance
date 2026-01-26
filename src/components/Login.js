@@ -34,6 +34,10 @@ export default function Login() {
                     //saving the user's name
                     localStorage.setItem('studentName', data.user_name);
                     localStorage.setItem('roll_no', data.user)
+                    // 2. Save Filter Keys (CRITICAL FOR ROUTINE)
+                    localStorage.setItem('dept', data.dept);
+                    // ADD THIS LINE! This is what Routine.js looks for.
+                    localStorage.setItem('sem', data.sem);
 
                     // 2. ADD THIS LINE HERE! This forces App.js to notice the change immediately.
                     window.dispatchEvent(new Event("storage"));
