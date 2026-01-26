@@ -10,6 +10,8 @@ export default function Navbar(props) {
     // [2] Function to handle logging out
     const handleLogout = () => {
         localStorage.clear(); // Clears name and session data
+        // ADD THIS LINE HERE TOO!
+    window.dispatchEvent(new Event("storage"));
         navigate('/login'); // Redirect to login page
     };
 
