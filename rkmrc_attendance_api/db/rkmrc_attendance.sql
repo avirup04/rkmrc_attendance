@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2026 at 05:18 PM
+-- Generation Time: Jan 27, 2026 at 08:10 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,13 @@ CREATE TABLE `attendance_log` (
   `status` varchar(20) NOT NULL,
   `timestamp` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attendance_log`
+--
+
+INSERT INTO `attendance_log` (`id`, `roll_no`, `dept`, `sem`, `subject`, `date`, `day`, `time_slot`, `status`, `timestamp`) VALUES
+(12, 'LSUG/124/25', 'Life_Sciences', '2', 'VAC/AEC', '2026-01-01', 'Thursday', '10.30-11.15', 'Present', '2026-01-27 12:40:10');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,8 @@ INSERT INTO `users` (`id`, `roll_no`, `name`, `dept`, `semester`, `email`, `mobi
 (1, 'LSUG/124/25', 'Avirup Mukherjee', 'Life_Sciences', 2, 'avirupmukherjee019@gmail.com', '+919609173472', '$2y$10$XYsn.Bb2pkVxrMEbNrPrZ.Mv8hUtZ5Smta0h6Be0kNRlDumVC1tue', 0),
 (2, 'ENUG/124/25', 'Anway Saha', 'English', 2, 'anway@gmail.com', '1234567890', '$2y$10$pWeBCXQqoVczUYTxLSCmn.aXyGSucDUutWQ3AgBkcQ1AOH4yFo4my', 0),
 (3, 'LSUG/125/25', 'Rahul Sardar', 'Life_Sciences', 1, 'rahul@gmail.com', '1234567890', '$2y$10$2JoOMvfjTG/B9KmDP/Zo5eXFDd7U/sPwtbbr8KfyZgjSgeMr9eT4q', 0),
-(4, 'CSUG/124/25', 'Pakhi', 'Computer_Science', 1, 'pakhi@gmail.com', '1234567890', '$2y$10$svcnWMzzj66CGrkoa4InI.p52Y9qyw84KGADf5icg7Xtrs5VpIp8e', 0);
+(4, 'CSUG/124/25', 'Pakhi', 'Computer_Science', 1, 'pakhi@gmail.com', '1234567890', '$2y$10$svcnWMzzj66CGrkoa4InI.p52Y9qyw84KGADf5icg7Xtrs5VpIp8e', 0),
+(5, 'LSUG/254/25', 'Avik Makal', 'Life_Sciences', 2, 'tanusreemakal6@gmail.com', '8910448245', '$2y$10$GpVqRlJ6QHwPA4MyV8m1R.tdLN.Ydnm/pMoKrhJJiCvv1Qwzlgt12', 0);
 
 --
 -- Indexes for dumped tables
@@ -181,7 +189,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `master_schedule`
@@ -193,7 +201,7 @@ ALTER TABLE `master_schedule`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
