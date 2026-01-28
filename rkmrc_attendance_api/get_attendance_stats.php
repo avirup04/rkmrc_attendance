@@ -28,6 +28,8 @@ while($sub_row = $subject_res->fetch_assoc()) {
     $absent = (int)$res['absent'];
     $total_happened = $present + $absent;
 
+    // Logic: Avoid division by zero
+    // Percentage Calculation
     $percentage = ($total_happened > 0) ? ($present / $total_happened) * 100 : 0;
 
     $marks = 0;
@@ -36,5 +38,19 @@ while($sub_row = $subject_res->fetch_assoc()) {
     else if ($percentage >= 85) $marks = 3;
     else if ($percentage >= 80) $marks = 2;
     else if ($percentage >= 75) $marks = 1;
+
+    //afford to miss logic
+    // Formula: (Present / (Total + X)) >= 0.75  => X = (Present / 0.75) - Total
+    $can_miss = ($percentage >= 75) ? floor(($present / 0.75) - $total_happened) : 0;
+
+    $stats[] = [
+        "subject" => $subject,
+        "percentage" => round($percentage, 1),
+        "total_happened" => $total_happened,
+        "present" => $present,
+        "marks" => $marks,
+        "can_miss" => max(0, $can_miss)
+    ];
 }
+echo json_encode(["status" => "success", "data" => $stats]);
 ?>

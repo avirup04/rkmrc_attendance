@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2026 at 08:10 AM
+-- Generation Time: Jan 28, 2026 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,8 @@ CREATE TABLE `attendance_log` (
 --
 
 INSERT INTO `attendance_log` (`id`, `roll_no`, `dept`, `sem`, `subject`, `date`, `day`, `time_slot`, `status`, `timestamp`) VALUES
-(12, 'LSUG/124/25', 'Life_Sciences', '2', 'VAC/AEC', '2026-01-01', 'Thursday', '10.30-11.15', 'Present', '2026-01-27 12:40:10');
+(12, 'LSUG/124/25', 'Life_Sciences', '2', 'VAC/AEC', '2026-01-01', 'Thursday', '10.30-11.15', 'Present', '2026-01-27 12:40:10'),
+(13, 'LSUG/124/25', 'Life_Sciences', '2', 'VAC/AEC', '2026-01-05', 'Monday', '10.30-11.15', 'Present', '2026-01-28 15:44:24');
 
 -- --------------------------------------------------------
 
@@ -189,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `master_schedule`
