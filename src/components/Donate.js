@@ -3,11 +3,11 @@ import myQrCode from '../assets/my-qr.png';
 
 export default function Donate() {
     // --- MANUAL DONOR LIST CONFIGURATION ---
-    // You can edit this list manually whenever someone donates!
+    // ADD THE 'dept' FIELD HERE
     const donors = [
-        { name: "Avik Makal", year: "1st Year as of 2025-2026", amount: "₹5" },
-        // Copy paste this line to add more:
-        // { name: "Name Here", year: "Year Here", amount: "₹Amount" },
+        { name: "Avik Makal", dept: "Life Sciences", year: "1st Year as of 2025-2026", amount: "₹5" },
+        { name: "Taniska Biswas", dept: "Life Sciences", year: "1st Year as of 2025-2026", amount: "₹1" },
+        // { name: "Name", dept: "Dept", year: "Year", amount: "₹Amount" },
     ];
 
     return (
@@ -23,7 +23,6 @@ export default function Donate() {
             <div className="container">
                 <div className="row justify-content-center">
                     
-                    {/* Kept the column width same (col-lg-4) so it stays narrow and mobile-like */}
                     <div className="col-12 col-md-6 col-lg-4"> 
                         
                         {/* ==========================
@@ -36,7 +35,7 @@ export default function Donate() {
                                 <i className="bi bi-heart-fill display-4 mb-2 animate-pulse"></i>
                                 <h4 className="fw-bold mb-1">Support Us</h4>
                                 <p className="opacity-75 mb-0 small">
-                                    Dept. of Life Sciences
+                                    Built by Avirup Mukherjee, Dept. of Life Sciences
                                 </p>
                             </div>
 
@@ -113,13 +112,13 @@ export default function Donate() {
                             
                             <div className="card-footer bg-light p-2 text-center border-0">
                                 <small className="text-muted" style={{fontSize: '0.75rem'}}>
-                                    Every ₹10 helps keep the server running! 🚀
+                                    Every ₹10 helps keep the server running!
                                 </small>
                             </div>
                         </div>
 
                         {/* ==========================
-                           2. NEW DONORS LIST SECTION
+                           2. WALL OF LOVE (UPDATED)
                            ========================== */}
                         <div className="card border-0 shadow-sm rounded-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(10px)' }}>
                             <div className="card-body p-3">
@@ -133,18 +132,26 @@ export default function Donate() {
                                             <thead className="text-muted small border-bottom">
                                                 <tr>
                                                     <th className="fw-normal ps-3">#</th>
-                                                    <th className="fw-normal">Name</th>
+                                                    <th className="fw-normal">Student Details</th>
                                                     <th className="fw-normal text-end pe-3">Amt.</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {donors.map((donor, index) => (
                                                     <tr key={index}>
+                                                        {/* Serial Number */}
                                                         <td className="ps-3 text-muted small">{index + 1}</td>
+                                                        
+                                                        {/* Name & Details (Stacked) */}
                                                         <td>
                                                             <div className="fw-bold text-dark" style={{fontSize: '0.9rem'}}>{donor.name}</div>
-                                                            <div className="text-muted" style={{fontSize: '0.7rem'}}>{donor.year}</div>
+                                                            <div className="text-muted" style={{fontSize: '0.75rem'}}>
+                                                                {/* Display Dept and Year together */}
+                                                                {donor.dept} <span className="mx-1 opacity-50">•</span> {donor.year}
+                                                            </div>
                                                         </td>
+                                                        
+                                                        {/* Amount */}
                                                         <td className="text-end pe-3">
                                                             <span className="badge bg-success bg-opacity-10 text-success rounded-pill">
                                                                 {donor.amount}
