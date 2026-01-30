@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+/* --- 1. SIDEBAR BASE STYLES --- */
+.side-nav-drawer {
+    width: 250px;
+    height: 100vh; /* Full Height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500; /* Above everything else */
+    transition: transform 0.3s ease-in-out; /* Smooth slide */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* --- 2. MOBILE BEHAVIOR (The Fix) --- */
+@media (max-width: 767.98px) {
+    /* Hide off-screen by default */
+    .side-nav-drawer {
+        transform: translateX(-100%);
+    }
+    /* Slide in when 'show' class is added by React */
+    .side-nav-drawer.show {
+        transform: translateX(0);
+    }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- 3. DESKTOP BEHAVIOR --- */
+@media (min-width: 768px) {
+    /* Always visible, no toggle needed */
+    .side-nav-drawer {
+        transform: translateX(0);
+        top: 56px; /* Push down below top navbar */
+        height: calc(100vh - 56px);
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- 4. BACKDROP (Dark Background) --- */
+.side-nav-backdrop {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: rgba(0,0,0,0.5); /* Semi-transparent black */
+    z-index: 1400; /* Below sidebar, above content */
 }

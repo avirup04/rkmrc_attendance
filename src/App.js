@@ -1,4 +1,4 @@
-// import './App.css';\
+import './App.css'; // This is the most important line!
 import React, { useState, useEffect } from 'react'; // Add these hooks
 
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
