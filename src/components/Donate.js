@@ -1,37 +1,42 @@
 import React from 'react';
-import myQrCode from '../assets/my-qr.png'; // Your QR Code Import
+import myQrCode from '../assets/my-qr.png'; 
 
 export default function Donate() {
+    // --- MANUAL DONOR LIST CONFIGURATION ---
+    // You can edit this list manually whenever someone donates!
+    const donors = [
+        { name: "Avik Makal", year: "1st Year as of 2025-2026", amount: "₹5" },
+        // Copy paste this line to add more:
+        // { name: "Name Here", year: "Year Here", amount: "₹Amount" },
+    ];
+
     return (
         <div style={{ 
             background: 'linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%)', 
-            // FIX 1: Changed 'height' to 'minHeight'. 
-            // This allows the page to expand if the content (QR code) is tall.
             minHeight: 'calc(100vh - 80px)', 
-            
             display: 'flex',            
             alignItems: 'center',       
             justifyContent: 'center',
-            
-            // FIX 2: Added padding so the card doesn't touch the edges when scrolling
             paddingTop: '40px',
             paddingBottom: '40px'
-            
-            // REMOVED: overflow: 'hidden' (This was cutting off your content)
         }}>
             <div className="container">
                 <div className="row justify-content-center">
                     
+                    {/* Kept the column width same (col-lg-4) so it stays narrow and mobile-like */}
                     <div className="col-12 col-md-6 col-lg-4"> 
                         
-                        <div className="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        {/* ==========================
+                           1. MAIN DONATION CARD
+                           ========================== */}
+                        <div className="card border-0 shadow-lg rounded-4 overflow-hidden mb-4">
                             
                             <div className="card-header border-0 p-4 text-center text-white" 
                                  style={{ background: 'linear-gradient(to right, #11998e, #38ef7d)' }}>
                                 <i className="bi bi-heart-fill display-4 mb-2 animate-pulse"></i>
                                 <h4 className="fw-bold mb-1">Support Us</h4>
                                 <p className="opacity-75 mb-0 small">
-                                    Built by Avirup Mukherjee (Dept. of Life Sciences)
+                                    Dept. of Life Sciences
                                 </p>
                             </div>
 
@@ -61,15 +66,12 @@ export default function Donate() {
                                     {/* --- UPI OPTION --- */}
                                     <div className="tab-pane fade show active text-center" id="pills-upi">
                                         <div className="p-3 bg-light rounded-4 border border-2 border-dashed mb-3">
-                                            
-                                            {/* YOUR QR IMAGE */}
                                             <img 
                                                 src={myQrCode} 
                                                 alt="UPI QR Code" 
                                                 className="img-fluid rounded shadow-sm"
-                                                style={{ maxWidth: '180px' }} // Increased slightly for visibility
+                                                style={{ maxWidth: '180px' }} 
                                             />
-                                            
                                             <div className="mt-2 text-muted" style={{fontSize: '0.75rem'}}>
                                                 Scan with GPay / PhonePe
                                             </div>
@@ -111,8 +113,53 @@ export default function Donate() {
                             
                             <div className="card-footer bg-light p-2 text-center border-0">
                                 <small className="text-muted" style={{fontSize: '0.75rem'}}>
-                                    Every ₹10 helps keep the server running!
+                                    Every ₹10 helps keep the server running! 🚀
                                 </small>
+                            </div>
+                        </div>
+
+                        {/* ==========================
+                           2. NEW DONORS LIST SECTION
+                           ========================== */}
+                        <div className="card border-0 shadow-sm rounded-4" style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', backdropFilter: 'blur(10px)' }}>
+                            <div className="card-body p-3">
+                                <h6 className="fw-bold text-center mb-3 text-muted text-uppercase small letter-spacing-1">
+                                    💖 Wall of Love
+                                </h6>
+                                
+                                {donors.length > 0 ? (
+                                    <div className="table-responsive">
+                                        <table className="table table-sm table-borderless align-middle mb-0">
+                                            <thead className="text-muted small border-bottom">
+                                                <tr>
+                                                    <th className="fw-normal ps-3">#</th>
+                                                    <th className="fw-normal">Name</th>
+                                                    <th className="fw-normal text-end pe-3">Amt.</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {donors.map((donor, index) => (
+                                                    <tr key={index}>
+                                                        <td className="ps-3 text-muted small">{index + 1}</td>
+                                                        <td>
+                                                            <div className="fw-bold text-dark" style={{fontSize: '0.9rem'}}>{donor.name}</div>
+                                                            <div className="text-muted" style={{fontSize: '0.7rem'}}>{donor.year}</div>
+                                                        </td>
+                                                        <td className="text-end pe-3">
+                                                            <span className="badge bg-success bg-opacity-10 text-success rounded-pill">
+                                                                {donor.amount}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ) : (
+                                    <div className="text-center text-muted small py-2">
+                                        Be the first to donate! 🌟
+                                    </div>
+                                )}
                             </div>
                         </div>
 
