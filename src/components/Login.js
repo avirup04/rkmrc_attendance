@@ -39,8 +39,9 @@ export default function Login() {
                     // ADD THIS LINE! This is what Routine.js looks for.
                     localStorage.setItem('sem', data.sem);
 
-                    // 2. ADD THIS LINE HERE! This forces App.js to notice the change immediately.
+                    // Add these lines so the Sidebar appears instantly!
                     window.dispatchEvent(new Event("storage"));
+                    window.dispatchEvent(new Event("auth-change"));
                     alert("Login Successful!");
                     navigate('/dashboard');
                 }

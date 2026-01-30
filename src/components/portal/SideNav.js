@@ -78,12 +78,6 @@ export default function SideNav() {
                             <i className="bi bi-calendar3 me-2"></i> Weekly Routine
                         </Link>
                     </li>
-                    {/* NEW AGENDA #5: Donation Link */}
-                    <li>
-                        <Link to="/donate" className='nav-link text-success fw-bold'>
-                            <i className="bi bi-heart-fill me-2"></i> Support Us
-                        </Link>
-                    </li>
                 </ul>
 
                 <button className="btn btn-outline-danger w-100 mt-auto" onClick={handleLogout}>

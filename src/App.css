@@ -1,43 +1,81 @@
-/* --- 1. SIDEBAR BASE STYLES --- */
+/* =========================================
+   1. SIDEBAR STYLES (The Drawer)
+   ========================================= */
 .side-nav-drawer {
     width: 250px;
-    height: 100vh; /* Full Height */
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1500; /* Above everything else */
-    transition: transform 0.3s ease-in-out; /* Smooth slide */
+    z-index: 1500;
+    background-color: #212529; /* Dark Theme */
+    transition: transform 0.3s ease-in-out;
 }
 
-/* --- 2. MOBILE BEHAVIOR (The Fix) --- */
-@media (max-width: 767.98px) {
-    /* Hide off-screen by default */
-    .side-nav-drawer {
-        transform: translateX(-100%);
-    }
-    /* Slide in when 'show' class is added by React */
-    .side-nav-drawer.show {
-        transform: translateX(0);
-    }
-}
-
-/* --- 3. DESKTOP BEHAVIOR --- */
+/* DESKTOP: Sidebar sits normally on the left */
 @media (min-width: 768px) {
-    /* Always visible, no toggle needed */
     .side-nav-drawer {
         transform: translateX(0);
-        top: 56px; /* Push down below top navbar */
+        top: 56px; /* Below the top navbar */
         height: calc(100vh - 56px);
     }
 }
 
-/* --- 4. BACKDROP (Dark Background) --- */
+/* MOBILE: Sidebar hides off-screen */
+@media (max-width: 767.98px) {
+    .side-nav-drawer {
+        transform: translateX(-100%); /* Hidden */
+    }
+    .side-nav-drawer.show {
+        transform: translateX(0); /* Slides in */
+    }
+}
+
+/* =========================================
+   2. MAIN CONTENT WRAPPER (The Page Fix)
+   ========================================= */
+.main-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+    padding-top: 20px;
+}
+
+/* DESKTOP: Push content to the right to make room for sidebar */
+@media (min-width: 768px) {
+    .main-page-wrapper {
+        margin-left: 250px !important; /* Force space for sidebar */
+        width: calc(100% - 250px) !important;
+    }
+}
+
+/* MOBILE: CONTENT MUST BE FULL WIDTH (This fixes your bug) */
+@media (max-width: 767.98px) {
+    .main-page-wrapper {
+        margin-left: 0 !important; /* RESET MARGIN TO ZERO */
+        width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* =========================================
+   3. EXTRAS
+   ========================================= */
 .side-nav-backdrop {
     position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh;
-    background: rgba(0,0,0,0.5); /* Semi-transparent black */
-    z-index: 1400; /* Below sidebar, above content */
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 1400;
+}
+
+/* Ensure Top Navbar is Fixed and spans full width */
+.navbar {
+    position: fixed !important; /* Stick to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100; /* Layer 1100 (Below the Sidebar which is 1500) */
+    background-color: white; /* Ensure content doesn't show through it */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Adds a nice shadow */
 }
